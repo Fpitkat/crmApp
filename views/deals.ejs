@@ -1,0 +1,72 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="row mt-0">
+	<div class="col-md-6 wrapper">
+		<h3 class="text-center text-muted fs-4">
+			<i class="fa-duotone fa-map-location"></i> Deals by Zone
+		</h3>
+		<canvas id="openDeals"></canvas>
+	</div>
+	<div class="col-md-6 wrapper">
+		<h3 class="text-center text-muted fs-4">
+			<i class="fa-duotone fa-chart-simple"></i> Deals by Market Segment
+		</h3>
+		<canvas id="marketSegment"></canvas>
+	</div>
+</div>
+<div class="table-responsive mt-0">
+	<h3 class="text-center text-muted fs-4 mt-5">
+		<i class="fa-duotone fa-chart-mixed-up-circle-dollar"></i> New Deals
+	</h3>
+	<table class="table table-hover table-bordered">
+		<thead>
+			<tr class="table-active">
+				<th scope="col">Company</th>
+				<th scope="col">Contact</th>
+				<th scope="col">Priority</th>
+				<th scope="col text-center">Days</th>
+				<th scope="col">Segment</th>
+				<th scope="col">Status</th>
+				<th scope="col">Zone</th>
+				<th scope="col">Distributors</th>
+				<th scope="col">Edit</th>
+			</tr>
+		</thead>
+		<tbody class="table-group-divider">
+			<% for(let deal of deals) { %>
+			<tr>
+				<td><%= deal.company %></td>
+				<td><%= deal.contact %></td>
+				<td class="text-center"><%= deal.priority %></td>
+				<% if(deal.daysOpen < 30) { %>
+				<td
+					class="text-center"
+					id="colorGreen">
+					<%= deal.daysOpen %>
+				</td>
+				<% } else if(deal.daysOpen <= 50){%>
+				<td
+					class="text-center"
+					id="colorYellow">
+					<%= deal.daysOpen %>
+				</td>
+				<% } else {%>
+				<td
+					class="text-center"
+					id="colorRed">
+					<%= deal.daysOpen %>
+				</td>
+				<% } %>
+				<td><%= deal.segment %></td>
+				<td><%= deal.status %></td>
+				<td><%= deal.zone %></td>
+				<td><%= deal.distributor %></td>
+				<td class="text-center">
+					<a href="/deals/<%= deal._id %>"
+						><i class="fa-duotone fa-money-check-dollar-pen"></i></a>
+				</td>
+			</tr>
+			<% } %>
+		</tbody>
+	</table>
+</div>
