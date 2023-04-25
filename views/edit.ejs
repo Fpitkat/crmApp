@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate')%>
 
 <div class="container">
-  <form action="/deals/<%=deal._id%>?_method=PUT" class="validated-form">
+  <form action="/deals/<%=deal._id%>?_method=PUT" method="post" class="validated-form" novalidate>
     <div class="row gx-5">
       <div class="col-lg-8">
         <div class="row mt-2">
@@ -13,12 +13,18 @@
 
           <div class="mb-2 col-md-6">
             <label for="company" class="form-label text-muted">Company</label>
-            <input type="text" value="<%= deal.company %>" class="form-control" id="company" placeholder="Joe's Automotive" name="deal[company]"/>
+            <input type="text" value="<%= deal.company %>" class="form-control" id="company" placeholder="Joe's Automotive" name="deal[company]" required/>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-3">
             <label for="hot" class="form-label text-muted">Hot</label>
-            <select id="hot" class="form-select" value="<%= deal.hot %>" name="deal[hot]">
+            <select id="hot" class="form-select" value="<%= deal.hot %>" name="deal[hot]" required>
               <option selected>Choose One</option>
               <% if(deal.hot) { %>
               <option value="true" selected>
@@ -32,11 +38,18 @@
               </option>
               <% } %>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-3">
             <label for="hd" class="form-label text-muted">HD</label>
-            <select id="hd" class="form-select" aria-label="Default select example" name="deal[hd]" value="<%= deal.hd %>">
+            <select id="hd" class="form-select" aria-label="Default select example" name="deal[hd]" value="<%= deal.hd %>" required>
+              
               <option>Choose One</option>
               <% if(deal.hd) {%>
               <option value="true" selected>
@@ -50,47 +63,89 @@
               </option>
               <% } %>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-6">
             <label for="address" class="form-label text-muted">Address</label>
-            <input type="text" class="form-control" value="<%= deal.street  %>" name="deal[street]" id="address" placeholder="123 Main Street" />
+            <input type="text" class="form-control" value="<%= deal.street  %>" name="deal[street]" id="address" placeholder="123 Main Street" required/>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="city" class="form-label text-muted">City</label>
-            <input type="text" value="<%= deal.city  %>" name="deal[city]" class="form-control" id="city" placeholder="Jacksonville" />
+            <input type="text" value="<%= deal.city  %>" name="deal[city]" class="form-control" id="city" placeholder="Jacksonville" required/>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="state" class="form-label text-muted">State</label>
-            <input type="text" value="<%= deal.state  %>" name="deal[state]" class="form-control" id="state" placeholder="Florida" />
+            <input type="text" value="<%= deal.state  %>" name="deal[state]" class="form-control" id="state" placeholder="Florida" required/>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="zip" class="form-label text-muted">Zip</label>
-            <input type="number" value="<%= deal.zip  %>" class="form-control" id="zip" placeholder="32210" />
+            <input type="number" value="<%= deal.zip  %>" class="form-control" id="zip" placeholder="32210" name="deal[zip]" required/>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-4">
             <label for="phone" class="form-label text-muted">Phone <i class="fa-sharp fa-solid fa-phone-intercom"></i></label>
-            <a href="tel:<%= deal.companyPhone  %>">
-              <input type="tel" value="<%= deal.companyPhone  %>" name="deal[companyPhone]" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="phone" placeholder="(904) 555-5555" />
-            </a>
+              <input type="tel" value="<%= deal.companyPhone  %>" name="deal[companyPhone]" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="phone" placeholder="(904) 555-5555" required/>
+              <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-4">
-            <label for="linkedin" class="form-label text-muted">LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i></label>
-            <a href="<%= deal.contactLinkedin  %>" target="_blank" rel="noopener noreferrer">
-              <input type="url" value="<%= deal.contactLinkedin  %>" class="form-control" id="linkedin" placeholder="www.linkedin.com" />
-            </a>
+            <label for="companyLinkedIn" class="form-label text-muted">LinkedIn</label>
+            <input type="text" value="<%= deal.companyLinkedIn %>" class="form-control" id="companyLinkedIn" placeholder="http://linkedin.com" name="deal[companyLinkedIn]"/>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-4 col-md-4">
-            <label for="website" class="form-label text-muted">Website <i class="fa-solid fa-arrow-up-right-from-square"></i></label>
-            <a href="<%= deal.companyWebsite  %>" target="_blank" rel="noopener noreferrer">
+            <label for="website" class="form-label text-muted">Website <i class="fa-solid fa-arrow-up-right-from-square"></i></label>       
               <input type="url" value="<%= deal.companyWebsite  %>" name="deal[companyWebsite]" class="form-control" id="website" placeholder="www.yourwebsite.com" />
-            </a>
+              <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
         </div>
 
@@ -102,12 +157,18 @@
 
           <div class="mb-2 col-md-6">
             <label for="dealName" class="form-label text-muted">Deal Name</label>
-            <input name='deal[dealName]' type="text" value="<%= deal.dealName  %>" name="deal[dealName]" class="form-control" id="dealName" placeholder="HawkEye Elite" />
+            <input name='deal[dealName]' type="text" value="<%= deal.dealName  %>" name="deal[dealName]" class="form-control" id="dealName" placeholder="HawkEye Elite" required/>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="priority" class="form-label text-muted">Priority</label>
-            <select id="priority" class="form-select" aria-label="Default select example" name="deal[priority]" value="<%= deal.priority %>" >
+            <select id="priority" class="form-select" aria-label="Default select example" name="deal[priority]" value="<%= deal.priority %>" required>
               <option selected>Choose</option>
               <option value="choose" <% if (deal.priority ==="choose"){ %> selected <% } %>>Choose</option>
               <option value="11" <% if (deal.priority === 11){ %> selected <% } %>>11</option>
@@ -122,62 +183,84 @@
               <option value="2" <% if (deal.priority === 2){ %> selected <% } %>>2</option>
               <option value="1" <% if (deal.priority === 1){ %> selected <% } %>>1</option>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-2">
-            <label for="createDate" class="form-label text-muted">Created</label>
-            <% let createDate = deal.createDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }); %>
+            <label for="createDate" class="form-label text-muted">Created Date</label>
             <p class="pt-1"><%= createDate %></p>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="daysOpen" class="form-label text-muted">Days Open</label>
-            <input type="number" value="<%= deal.daysOpen  %>" name="deal[daysOpen]" class="form-control" id="daysOpen" placeholder="35"  />
+            <input type="number" value="<%= daysCreated  %>" name="deal[daysOpen]" class="form-control" id="daysOpen" placeholder="35" disabled />
           </div>
 
           <div class="mb-2 col-md-3">
             <label for="stage" class="form-label text-muted">Stage</label>
-            <select class="form-select" name="deal[stage]" value="<%= deal.stage %>">
+            <select class="form-select" name="deal[stage]" value="<%= deal.stage %>" required>
               <option value="Choose One" <% if (deal.stage === "Choose One"){ %> selected <% } %>>Choose One</option>
-              <option value="lead" <% if (deal.stage ==="lead"){ %> selected <% } %>>Lead</option>
-              <option value="inquiry" <% if (deal.stage === "inquiry"){ %> selected <% } %>>Inquiry</option>
-              <option value="qualified" <% if (deal.stage === "qualified"){ %> selected <% } %>>Qualified</option>
-              <option value="demo" <% if (deal.stage === "demo"){ %> selected <% } %>>Demo</option>
-              <option value="negotiation" <% if (deal.stage ==="negotiation"){ %> selected <% } %>>Negotiation</option>
-              <option value="closure" <% if (deal.stage ==="closure"){ %> selected <% } %>>Closure</option>
+              <option value="Lead" <% if (deal.stage ==="Lead"){ %> selected <% } %>>Lead</option>
+              <option value="Inquiry" <% if (deal.stage === "Inquiry"){ %> selected <% } %>>Inquiry</option>
+              <option value="Qualified" <% if (deal.stage === "Qualified"){ %> selected <% } %>>Qualified</option>
+              <option value="Demo" <% if (deal.stage === "Demo"){ %> selected <% } %>>Demo</option>
+              <option value="Negotiation" <% if (deal.stage ==="Negotiation"){ %> selected <% } %>>Negotiation</option>
+              <option value="Closure" <% if (deal.stage ==="Closure"){ %> selected <% } %>>Closure</option>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-3">
             <label for="status" class="form-label text-muted">Status</label>
-            <select class="form-select" aria-label="Default select example" name="deal[status]" value="<%= deal.status %>" >
+            <select class="form-select" aria-label="Default select example" name="deal[status]" value="<%= deal.status %>" required>
               <option value="Choose One" <% if (deal.status ==="Choose One"){ %> selected <% } %>>Choose One</option>
-              <option value="open" <% if (deal.status ==="open"){ %> selected <% } %>>Open</option>
-              <option value="won" <% if (deal.status ==="won"){ %> selected <% } %>>Won</option>
-              <option value="lost" <% if (deal.status ==="lost"){ %> selected <% } %>>Lost</option>
-              <option value="inactive" <% if (deal.status ==="inactive"){ %> selected <% } %>>Inactive</option>
+              <option value="Open" <% if (deal.status ==="Open"){ %> selected <% } %>>Open</option>
+              <option value="Won" <% if (deal.status ==="Won"){ %> selected <% } %>>Won</option>
+              <option value="Lost" <% if (deal.status ==="Lost"){ %> selected <% } %>>Lost</option>
+              <option value="Inactive" <% if (deal.status ==="Inactive"){ %> selected <% } %>>Inactive</option>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="value" class="form-label text-muted">Value</label>
-            <input type="text" value="<%= deal.value %>" name="deal[value]" class="form-control input-group" id="value" placeholder="$35,000" />
+            <input type="text" value="<%= deal.value %>" name="deal[value]" class="form-control input-group" id="value" placeholder="$35,000" required/>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="activityDate" class="form-label text-muted">Activity Date</label>
-            <% let lastActivityDate = deal.lastActivityDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }); %>
-            <p class="pt-1"><%= lastActivityDate %></p>
+            <p class="pt-1"><%= activityDate %></p>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="daysLastActivity" class="form-label text-muted">Last Activity</label>
-            <input type="number" value="<%= deal.lastActivityDays  %>" name="deal[lastActivityDays]" class="form-control" id="daysLastActivity" placeholder="85"  />
+            <input type="number" value="<%= daysActivity  %>" name="deal[lastActivityDays]" class="form-control" id="daysLastActivity" placeholder="85"  disabled/>
           </div>
 
           <div class="col-lg-6 mb-2">
             <label for="market" class="form-label text-muted">Segment</label>
-            <select class="form-select" aria-label="Default select example" name="deal[segment]" value="<%= deal.segment %>">
+            <select class="form-select" aria-label="Default select example" name="deal[segment]" value="<%= deal.segment %>" required>
               <option value="Choose One" <% if (deal.segment ==="Choose One"){ %> selected <% } %>>Choose One</option>
               <option value="Auto Dealer" <% if (deal.segment ==="Auto Dealer"){ %> selected <% } %>>Auto Dealer</option>
               <option value="Tire Dealer" <% if (deal.segment ==="Tire Dealer"){ %> selected <% } %>>Tire Dealer</option>
@@ -186,23 +269,35 @@
               <option value="Government" <% if (deal.segment ==="Government"){ %> selected <% } %>>Government</option>
               <option value="Specialty" <% if (deal.segment ==="Specialty"){ %> selected <% } %>>Specialty</option>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class="col-lg-6 mb-2">
             <label for="zone" class="form-label text-muted">Zone</label>
-            <select class="form-select" name="deal[zone]" value="<%= deal.zone %>">
+            <select class="form-select" name="deal[zone]" value="<%= deal.zone %>" required>
               <option value="Choose One" <% if (deal.zone ==="Choose One"){ %> selected <% } %>>Choose One</option>
-              <option value="jacksonville" <% if (deal.zone ==="jacksonville"){ %> selected <% } %>>Jacksonville</option>
-              <option value="waycross" <% if (deal.zone ==="waycross"){ %> selected <% } %>>Waycross</option>
-              <option value="yulee" <% if (deal.zone ==="yulee"){ %> selected <% } %>>Yulee</option>
-              <option value="kingsland" <% if (deal.zone ==="kingsland"){ %> selected <% } %>>Kingsland</option>
-              <option value="brunswick" <% if (deal.zone ==="brunswick"){ %> selected <% } %>>Brunswick</option>
+              <option value="Jacksonville" <% if (deal.zone ==="Jacksonville"){ %> selected <% } %>>Jacksonville</option>
+              <option value="Waycross" <% if (deal.zone ==="Waycross"){ %> selected <% } %>>Waycross</option>
+              <option value="Yulee" <% if (deal.zone ==="Yulee"){ %> selected <% } %>>Yulee</option>
+              <option value="Kingsland" <% if (deal.zone ==="Kingsland"){ %> selected <% } %>>Kingsland</option>
+              <option value="Brunswick" <% if (deal.zone ==="Brunswick"){ %> selected <% } %>>Brunswick</option>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
           <div class=" mb-2 col-lg-6">
             <label for="source" class="form-label text-muted">Lead Source</label>
-            <select class="form-select" name="deal[source]" value="<%= deal.source %>">
+            <select class="form-select" name="deal[source]" value="<%= deal.source %>" required>
               <option value="Choose One" <% if (deal.source ==="Choose One"){ %> selected <% } %>>Choose One</option>
               <option value="Asbury Group" <% if (deal.source ==="Asbury Group"){ %> selected <% } %>>Asbury Group</option>
               <option value="AutoNation" <% if (deal.source ==="AutoNation"){ %> selected <% } %>>AutoNation</option>
@@ -225,12 +320,18 @@
               <option value="Southern Equipment" <% if (deal.source ==="Southern Equipment"){ %> selected <% } %>>Southern Equipment</option>
               <option value="Tire Pros / ATD" <% if (deal.source ==="Tire Pros / ATD"){ %> selected <% } %>>Tire Pros / ATD</option>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
 
 
           <div class=" mb-2 col-lg-6">
             <label for="source" class="form-label text-muted">Distributor</label>
-            <select class="form-select" name="deal[distributor]" value="<%= deal.distributor %>">
+            <select class="form-select" name="deal[distributor]" value="<%= deal.distributor %>" required>
               <option value="Choose One" <% if (deal.distributor ==="Choose One"){ %> selected <% } %>>Choose One</option>
               <option value="Asbury Group" <% if (deal.distributor ==="Asbury Group"){ %> selected <% } %>>Asbury Group</option>
               <option value="AutoNation" <% if (deal.distributor ==="AutoNation"){ %> selected <% } %>>AutoNation</option>
@@ -253,6 +354,12 @@
               <option value="Southern Equipment" <% if (deal.distributor ==="Southern Equipment"){ %> selected <% } %>>Southern Equipment</option>
               <option value="Tire Pros / ATD" <% if (deal.distributor ==="Tire Pros / ATD"){ %> selected <% } %>>Tire Pros / ATD</option>
             </select>
+            <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
           </div>
         </div>
 
@@ -269,42 +376,70 @@
 
                 <div class="mb-2">
                   <label for="contactName" class="form-label text-muted">Contact Name</label>
-                  <input type="text" value="<%= deal.contact  %>" name="deal[contact]" class="form-control" id="contactName" placeholder="Jane Doe" />
+                  <input type="text" value="<%= deal.contact  %>" name="deal[contact]" class="form-control" id="contactName" placeholder="Jane Doe" required/>
+                  <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
                 </div>
 
                 <div class="mb-2">
                   <label for="directPhone" class="form-label text-muted">Direct Phone <i class="fa-sharp fa-solid fa-phone-intercom"></i></label>
-                  <a href="tel:<%= deal.contactDirect  %>">
-                    <input type="tel" value="<%= deal.contactDirect  %>" name="deal[contactDirect]" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="directPhone" placeholder="(904) 555-5555" />
-                  </a>
+                    <input type="tel" value="<%= deal.contactDirect  %>" name="deal[contactDirect]" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="directPhone" placeholder="(904) 555-5555" required/>
+                    <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+									</div>
                 </div>
 
                 <div class="mb-2">
                   <label for="linkedin" class="form-label text-muted">LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i> </label>
-                  <a href="<%= deal.contactLinkedin  %>" target="_blank" rel="noopener noreferrer">
                     <input value="<%= deal.contactLinkedin  %>" name="deal[contactLinkedin]" type="url" class="form-control" id="linkedin" placeholder="www.linkedin.com"  />
-                  </a>
+                    <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="mb-2">
                   <label for="contactEmail" class="form-label text-muted">Contact Email <i class="fa-solid fa-envelope"></i></label>
-                  <a href="mailto:<%= deal.contactEmail  %>">
-                    <input type="email" value="<%= deal.contactEmail  %>" name="deal[contactEmail]" class="form-control" id="contactEmail" placeholder="JaneDoe@email.com" />
-                  </a>
+                    <input type="email" value="<%= deal.contactEmail  %>" name="deal[contactEmail]" class="form-control" id="contactEmail" placeholder="JaneDoe@email.com" required/>
+                    <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
                 </div>
 
                 <div class="mb-2">
                   <label for="cellPhone" class="form-label text-muted">Cell Phone <i class="fa-solid fa-mobile-retro"></i></label>
-                  <a href="tel:<%= deal.contactCell  %>">
-                    <input type="tel" value="<%= deal.contactCell  %>" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="cellPhone" placeholder="(904) 555-5555" />
-                  </a>
+                    <input type="tel" value="<%= deal.contactCell  %>" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="cellPhone" placeholder="(904) 555-5555" name="deal[contactCell]"/>
+                    <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
+                 
                 </div>
 
                 <div class="mb-2">
                   <label for="facebook" class="form-label text-muted">Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></label>
-                  <a href="<%= deal.contactFB  %>" target="_blank"><input type="url" value="<%= deal.contactFB  %>" name="deal[contactFB]" class="form-control" id="facebook" placeholder="www.facebook.com/" /></a>
+                  <input type="url" value="<%= deal.contactFB  %>" name="deal[contactFB]" class="form-control" id="facebook" placeholder="www.facebook.com/" />
+                  <div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
                 </div>
 
               </div>
@@ -319,9 +454,6 @@
             <i class="fa-solid fa-calendar-lines-pen"></i> History Details
           </h4>
           <hr />
-         
-
-          
 
           <div class="btn-group gap-1 mb-5 text-muted" role="group" aria-label="Basic example">
             <button class="btn btn-dark mt-4">Save</button>
@@ -329,6 +461,9 @@
         </div>
       </div>
     </div>
+  </form>
+  <form action="/deals/<%= deal._id %>?_method=DELETE" method="post">
+    <button class="btn btn-danger">Delete</button>
   </form>
 </div>
 

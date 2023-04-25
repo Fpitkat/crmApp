@@ -14,7 +14,7 @@
 		<canvas id="marketSegment"></canvas>
 	</div>
 </div>
-<div class="table-responsive mt-0">
+<div class="table-responsive mt-4">
 	<h3 class="text-center text-muted fs-4 mt-5">
 		<i class="fa-duotone fa-chart-mixed-up-circle-dollar"></i> New Deals
 	</h3>
@@ -38,23 +38,23 @@
 				<td><%= deal.company %></td>
 				<td><%= deal.contact %></td>
 				<td class="text-center"><%= deal.priority %></td>
-				<% if(deal.daysOpen < 30) { %>
+				<% if(deal.lastActivityDays < 30) { %>
 				<td
 					class="text-center"
 					id="colorGreen">
-					<%= deal.daysOpen %>
+					<%= deal.lastActivityDays %>
 				</td>
-				<% } else if(deal.daysOpen <= 50){%>
+				<% } else if(deal.lastActivityDays <= 50){%>
 				<td
 					class="text-center"
 					id="colorYellow">
-					<%= deal.daysOpen %>
+					<%= deal.lastActivityDays %>
 				</td>
 				<% } else {%>
 				<td
 					class="text-center"
 					id="colorRed">
-					<%= deal.daysOpen %>
+					<%= deal.lastActivityDays %>
 				</td>
 				<% } %>
 				<td><%= deal.segment %></td>
@@ -62,8 +62,7 @@
 				<td><%= deal.zone %></td>
 				<td><%= deal.distributor %></td>
 				<td class="text-center">
-					<a href="/deals/<%= deal._id %>"
-						><i class="fa-duotone fa-money-check-dollar-pen"></i></a>
+					<a href="/deals/<%= deal._id %>"><i class="fa-duotone fa-money-check-dollar-pen"></i></a>
 				</td>
 			</tr>
 			<% } %>

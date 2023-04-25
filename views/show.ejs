@@ -39,10 +39,10 @@
             <select id="hd" class="form-select" aria-label="Default select example" disabled>
               <option>Choose One</option>
               <% if(deal.hd) {%>
-              <option value="True" selected>
+              <option value="true" selected>
                 True
               </option>
-              <option value="False">False</option>
+              <option value="false">False</option>
               <% } else { %>
               <option value="true">True</option>
               <option value="false" selected>
@@ -81,8 +81,8 @@
 
           <div class="mb-2 col-md-4">
             <label for="linkedin" class="form-label text-muted">LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i></label>
-            <a href="<%= deal.contactLinkedin  %>" target="_blank" rel="noopener noreferrer">
-              <input type="url" value="<%= deal.contactLinkedin  %>" class="form-control" id="linkedin" placeholder="www.linkedin.com" disabled/>
+            <a href="<%= deal.companyLinkedIn  %>" target="_blank" rel="noopener noreferrer">
+              <input type="url" name='deal[companyLinkedIn]' value="<%= deal.companyLinkedIn  %>" class="form-control" id="linkedin" placeholder="www.linkedin.com" disabled/>
             </a>
           </div>
 
@@ -125,54 +125,53 @@
           </div>
 
           <div class="mb-2 col-md-2">
-            <label for="createDate" class="form-label text-muted">Created</label>
-            <% let createDate = deal.createDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }); %>
+            <label for="createDate" class="form-label text-muted">Created Date</label>
+            
             <p class="pt-1"><%= createDate %></p>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="daysOpen" class="form-label text-muted">Days Open</label>
-            <input type="number" value="<%= deal.daysOpen  %>" class="form-control" id="daysOpen" placeholder="35" disabled />
+            <input type="number" value="<%= daysCreated  %>" class="form-control" id="daysOpen" placeholder="35" disabled />
           </div>
 
           <div class="mb-2 col-md-3">
             <label for="stage" class="form-label text-muted">Stage</label>
-            <select class="form-select" name="deal[stage]" disabled>
+            <select class="form-select" name="deal[stage]" value="<%= deal.stage %>" disabled>
               <option value="Choose One" <% if (deal.stage === "Choose One"){ %> selected <% } %>>Choose One</option>
-              <option value="lead" <% if (deal.stage ==="lead"){ %> selected <% } %>>Lead</option>
-              <option value="inquiry" <% if (deal.stage === "inquiry"){ %> selected <% } %>>Inquiry</option>
-              <option value="qualified" <% if (deal.stage === "qualified"){ %> selected <% } %>>Qualified</option>
-              <option value="demo" <% if (deal.stage === "demo"){ %> selected <% } %>>Demo</option>
-              <option value="negotiation" <% if (deal.stage ==="negotiation"){ %> selected <% } %>>Negotiation</option>
-              <option value="closure" <% if (deal.stage ==="closure"){ %> selected <% } %>>Closure</option>
+              <option value="Lead" <% if (deal.stage ==="Lead"){ %> selected <% } %>>Lead</option>
+              <option value="Inquiry" <% if (deal.stage === "Inquiry"){ %> selected <% } %>>Inquiry</option>
+              <option value="Qualified" <% if (deal.stage === "Qualified"){ %> selected <% } %>>Qualified</option>
+              <option value="Demo" <% if (deal.stage === "Demo"){ %> selected <% } %>>Demo</option>
+              <option value="Negotiation" <% if (deal.stage ==="Negotiation"){ %> selected <% } %>>Negotiation</option>
+              <option value="Closure" <% if (deal.stage ==="Closure"){ %> selected <% } %>>Closure</option>
             </select>
           </div>
 
           <div class="mb-2 col-md-3">
             <label for="status" class="form-label text-muted">Status</label>
-            <select class="form-select" aria-label="Default select example" disabled>
+            <select value="<%= deal.status %>" class="form-select" aria-label="Default select example" disabled>
               <option value="Choose One" <% if (deal.status ==="Choose One"){ %> selected <% } %>>Choose One</option>
-              <option value="open" <% if (deal.status ==="open"){ %> selected <% } %>>Open</option>
-              <option value="won" <% if (deal.status ==="won"){ %> selected <% } %>>Won</option>
-              <option value="lost" <% if (deal.status ==="lost"){ %> selected <% } %>>Lost</option>
-              <option value="inactive" <% if (deal.status ==="inactive"){ %> selected <% } %>>Inactive</option>
+              <option value="Open" <% if (deal.status ==="Open"){ %> selected <% } %>>Open</option>
+              <option value="Won" <% if (deal.status ==="Won"){ %> selected <% } %>>Won</option>
+              <option value="Lost" <% if (deal.status ==="Lost"){ %> selected <% } %>>Lost</option>
+              <option value="Inactive" <% if (deal.status ==="Inactive"){ %> selected <% } %>>Inactive</option>
             </select>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="value" class="form-label text-muted">Value</label>
-            <input type="text" value="<%= deal.value %>" class="form-control input-group" id="value" placeholder="$35,000" disabled/>
+            <input type="text" value="<%= dealValue %>" class="form-control input-group" id="value" placeholder="$35,000" disabled/>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="activityDate" class="form-label text-muted">Activity Date</label>
-            <% let lastActivityDate = deal.lastActivityDate.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }); %>
-            <p class="pt-1"><%= lastActivityDate %></p>
+            <p class="pt-1"><%= activityDate %></p>
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="daysLastActivity" class="form-label text-muted">Last Activity</label>
-            <input type="number" value="<%= deal.lastActivityDays  %>" class="form-control" id="daysLastActivity" placeholder="85" disabled />
+            <input type="number" value="<%= daysActivity  %>" class="form-control" id="daysLastActivity" placeholder="85" disabled />
           </div>
 
           <div class="col-lg-6 mb-2">
@@ -190,13 +189,13 @@
 
           <div class="col-lg-6 mb-2">
             <label for="zone" class="form-label text-muted">Zone</label>
-            <select class="form-select" name="deal[zone]" disabled>
+            <select class="form-select" name="deal[zone]" value="<%= deal.zone %>" disabled>
               <option value="Choose One" <% if (deal.zone ==="Choose One"){ %> selected <% } %>>Choose One</option>
-              <option value="jacksonville" <% if (deal.zone ==="jacksonville"){ %> selected <% } %>>Jacksonville</option>
-              <option value="waycross" <% if (deal.zone ==="waycross"){ %> selected <% } %>>Waycross</option>
-              <option value="yulee" <% if (deal.zone ==="yulee"){ %> selected <% } %>>Yulee</option>
-              <option value="kingsland" <% if (deal.zone ==="kingsland"){ %> selected <% } %>>Kingsland</option>
-              <option value="brunswick" <% if (deal.zone ==="brunswick"){ %> selected <% } %>>Brunswick</option>
+              <option value="Jacksonville" <% if (deal.zone ==="Jacksonville"){ %> selected <% } %>>Jacksonville</option>
+              <option value="Waycross" <% if (deal.zone ==="Waycross"){ %> selected <% } %>>Waycross</option>
+              <option value="Yulee" <% if (deal.zone ==="Yulee"){ %> selected <% } %>>Yulee</option>
+              <option value="Kingsland" <% if (deal.zone ==="Kingsland"){ %> selected <% } %>>Kingsland</option>
+              <option value="Brunswick" <% if (deal.zone ==="Brunswick"){ %> selected <% } %>>Brunswick</option>
             </select>
           </div>
 

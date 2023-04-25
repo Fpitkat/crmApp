@@ -4,7 +4,8 @@
 	<form
 		action="/deals"
 		method="post"
-		class="validated-form">
+		class="validated-form"
+		novalidate>
 		<div class="row gx-5">
 			<div class="col-lg-12">
 				<div class="row mt-4">
@@ -23,7 +24,14 @@
 							name="deal[company]"
 							class="form-control"
 							id="company"
-							placeholder="Joe's Automotive" />
+							placeholder="Joe's Automotive"
+							required />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-3">
 						<label
@@ -35,11 +43,21 @@
 							id="hot"
 							class="form-select"
 							name="deal[hot]"
-							aria-label="Default select example">
-							<option selected>Choose One</option>
+							aria-label="Default select example"
+							required>
 							<option value="true">True</option>
-							<option value="false">False</option>
+							<option
+								value="false"
+								selected>
+								False
+							</option>
 						</select>
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-3">
 						<label
@@ -51,11 +69,21 @@
 							id="hd"
 							name="deal[hd]"
 							class="form-select"
-							aria-label="Default select example">
-							<option selected>Choose One</option>
+							aria-label="Default select example"
+							required>
 							<option value="true">True</option>
-							<option value="false">False</option>
+							<option
+								value="false"
+								selected>
+								False
+							</option>
 						</select>
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-6">
 						<label
@@ -68,7 +96,14 @@
 							class="form-control"
 							name="deal[street]"
 							id="address"
-							placeholder="123 Main Street" />
+							placeholder="123 Main Street"
+							required />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-2">
 						<label
@@ -81,7 +116,14 @@
 							name="deal[city]"
 							class="form-control"
 							id="city"
-							placeholder="Jacksonville" />
+							placeholder="Jacksonville"
+							required />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-2">
 						<label
@@ -94,7 +136,14 @@
 							name="deal[state]"
 							class="form-control"
 							id="state"
-							placeholder="Florida" />
+							placeholder="Florida"
+							required />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-2">
 						<label
@@ -107,9 +156,16 @@
 							type="number"
 							class="form-control"
 							id="zip"
-							placeholder="32210" />
+							placeholder="32210"
+							required />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
-					<div class="mb-3 col-md-3">
+					<div class="mb-3 col-md-4">
 						<label
 							for="phone"
 							class="form-label text-muted"
@@ -122,9 +178,16 @@
 							maxlength="14"
 							class="form-control"
 							id="phone"
-							placeholder="(904) 555-5555" />
+							placeholder="(904) 555-5555"
+							required />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
-					<div class="mb-3 col-md-3">
+					<div class="mb-3 col-md-4">
 						<label
 							for="linkedin"
 							class="form-label text-muted"
@@ -137,20 +200,8 @@
 							id="linkedin"
 							placeholder="www.linkedin.com" />
 					</div>
-					<div class="mb-3 col-md-3">
-						<label
-							for="facebook"
-							class="form-label text-muted"
-							>Facebook</label
-						>
-						<input
-							type="url"
-							name="deal[companyFB]"
-							class="form-control"
-							id="facebook"
-							placeholder="www.facebook.com/" />
-					</div>
-					<div class="mb-3 col-md-3">
+
+					<div class="mb-3 col-md-4">
 						<label
 							for="website"
 							class="form-label text-muted"
@@ -162,6 +213,12 @@
 							class="form-control"
 							id="website"
 							placeholder="www.yourwebsite.com" />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 				</div>
 				<div class="row mt-4">
@@ -180,7 +237,14 @@
 							name="deal[dealName]"
 							class="form-control"
 							id="dealName"
-							placeholder="HawkEye Elite" />
+							placeholder="HawkEye Elite"
+							required />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-2">
 						<label
@@ -192,12 +256,18 @@
 							id="priority"
 							name="deal[priority]"
 							class="form-select"
-							aria-label="Default select example">
-							<option selected>Choose</option>
+							aria-label="Default select example"
+							required>
 							<% for( let i = 11; i > 0; i-- ) { %>
 							<option value="<%= i %>"><%= i %></option>
 							<% } %>
 						</select>
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-2">
 						<label
@@ -212,7 +282,14 @@
 							id="createDate"
 							placeholder="03/10/2022"
 							disabled />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
+
 					<div class="mb-3 col-md-2">
 						<label
 							for="daysOpen"
@@ -224,8 +301,14 @@
 							name="deal[daysOpen]"
 							class="form-control"
 							id="daysOpen"
-							placeholder="35"
+							placeholder="0"
 							disabled />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-3">
 						<label
@@ -236,15 +319,31 @@
 						<select
 							class="form-select"
 							name="deal[stage]"
-							aria-label="Default select example">
-							<option selected>Choose One</option>
-							<option value="lead">Lead</option>
-							<option value="inquiry">Inquiry</option>
-							<option value="qualified">Qualified</option>
-							<option value="demo">Demo</option>
-							<option value="negotiation">Negotiation</option>
-							<option value="closure">Closure</option>
+							aria-label="Default select example"
+							required>
+							<option
+								selected
+								disabled
+								value="Choose One">
+								Choose One
+							</option>
+							<option value="Lead">Lead</option>
+							<option value="Inquiry">Inquiry</option>
+							<option
+								value="Qualified"
+								selected>
+								Qualified
+							</option>
+							<option value="Demo">Demo</option>
+							<option value="Negotiation">Negotiation</option>
+							<option value="Closure">Closure</option>
 						</select>
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-3">
 						<label
@@ -255,13 +354,24 @@
 						<select
 							class="form-select"
 							name="deal[status]"
-							aria-label="Default select example">
+							aria-label="Default select example"
+							required>
 							<option selected>Choose One</option>
-							<option value="open">Open</option>
-							<option value="won">Won</option>
-							<option value="lost">Lost</option>
-							<option value="inactive">Inactive</option>
+							<option
+								value="Open"
+								selected>
+								Open
+							</option>
+							<option value="Won">Won</option>
+							<option value="Lost">Lost</option>
+							<option value="Inactive">Inactive</option>
 						</select>
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 					<div class="mb-3 col-md-2">
 						<label
@@ -275,7 +385,14 @@
 							name="deal[value]"
 							class="form-control input-group"
 							id="value"
-							placeholder="$35,000" />
+							placeholder="$35,000"
+							required />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
 
 					<div class="mb-3 col-md-2">
@@ -291,7 +408,14 @@
 							id="activityDate"
 							placeholder="03/10/2022"
 							disabled />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
 					</div>
+
 					<div class="mb-3 col-md-2">
 						<label
 							for="daysLastActivity"
@@ -303,8 +427,151 @@
 							name="deal[lastActivityDays]"
 							class="form-control"
 							id="daysLastActivity"
-							placeholder="85"
+							placeholder="0"
 							disabled />
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
+					</div>
+
+					<div class="col-lg-6 mb-2">
+						<label
+							for="market"
+							class="form-label text-muted"
+							>Segment</label
+						>
+						<select
+							class="form-select is-invalid"
+							aria-label="Default select example"
+							name="deal[segment]"
+							required>
+							<option
+								selected
+								disabled
+								value="">
+								Choose One
+							</option>
+							<option value="Auto Dealer">Auto Dealer</option>
+							<option value="Tire Dealer">Tire Dealer</option>
+							<option value="General Repair">General Repair</option>
+							<option value="Body Shop">Body Shop</option>
+							<option value="Government">Government</option>
+							<option value="Specialty">Specialty</option>
+						</select>
+						<div class="valid-feedback">Looks good!</div>
+						<div
+							id="validationServerUsernameFeedback"
+							class="invalid-feedback">
+							required
+						</div>
+					</div>
+
+					<div class="col-lg-6 mb-2">
+						<label
+							for="zone"
+							class="form-label text-muted"
+							>Zone</label
+						>
+						<select
+							class="form-select is-invalid"
+							name="deal[zone]"
+							required>
+							<option
+								selected
+								disabled
+								value="">
+								Choose One
+							</option>
+							<option value="Jacksonville">Jacksonville</option>
+							<option value="Waycross">Waycross</option>
+							<option value="Yulee">Yulee</option>
+							<option value="Kingsland">Kingsland</option>
+							<option value="Brunswick">Brunswick</option>
+						</select>
+						<div class="valid-feedback">Looks good!</div>
+					</div>
+
+					<div class="mb-2 col-lg-6">
+						<label
+							for="source"
+							class="form-label text-muted"
+							>Lead Source</label
+						>
+						<select
+							class="form-select is-invalid"
+							name="deal[source]"
+							required>
+							<option
+								selected
+								disabled
+								value="">
+								Choose One
+							</option>
+							<option value="Asbury Group">Asbury Group</option>
+							<option value="AutoNation">AutoNation</option>
+							<option value="Dealer Solutions & Design">Dealer Solutions & Design</option>
+							<option value="DES">DES</option>
+							<option value="Florida Equipment">Florida Equipment</option>
+							<option value="Florida Tire Supply">Florida Tire Supply</option>
+							<option value="HELM">HELM</option>
+							<option value="Hunter">Hunter</option>
+							<option value="Independent Tire Dealer Group">Independent Tire Dealer Group</option>
+							<option value="Lewis Tool">Lewis Tool</option>
+							<option value="Mohawk">Mohawk</option>
+							<option value="Mongoose">Mongoose</option>
+							<option value="Morgan Auto Group">Morgan Auto Group</option>
+							<option value="National Account - A Quota">National Account - A Quota</option>
+							<option value="National Account - B Quota">National Account - B Quota</option>
+							<option value="Rotunda / Ford">Rotunda / Ford</option>
+							<option value="Smith Garage Equipment">Smith Garage Equipment</option>
+							<option value="Snap-on Business Solutions">Snap-on Business Solutions</option>
+							<option value="Southern Equipment">Southern Equipment</option>
+							<option value="Tire Pros / ATD">Tire Pros / ATD</option>
+						</select>
+						<div class="valid-feedback">Looks good!</div>
+					</div>
+
+					<div class="mb-2 col-lg-6">
+						<label
+							for="source"
+							class="form-label text-muted"
+							>Distributor</label
+						>
+						<select
+							class="form-select is-invalid"
+							name="deal[distributor]"
+							required>
+							<option
+								selected
+								disabled
+								value="">
+								Choose One
+							</option>
+							<option value="Asbury Group">Asbury Group</option>
+							<option value="AutoNation">AutoNation</option>
+							<option value="Dealer Solutions & Design">Dealer Solutions & Design</option>
+							<option value="DES">DES</option>
+							<option value="Florida Equipment">Florida Equipment</option>
+							<option value="Florida Tire Supply">Florida Tire Supply</option>
+							<option value="HELM">HELM</option>
+							<option value="Hunter">Hunter</option>
+							<option value="Independent Tire Dealer Group">Independent Tire Dealer Group</option>
+							<option value="Lewis Tool">Lewis Tool</option>
+							<option value="Mohawk">Mohawk</option>
+							<option value="Mongoose">Mongoose</option>
+							<option value="Morgan Auto Group">Morgan Auto Group</option>
+							<option value="National Account - A Quota">National Account - A Quota</option>
+							<option value="National Account - B Quota">National Account - B Quota</option>
+							<option value="Rotunda / Ford">Rotunda / Ford</option>
+							<option value="Smith Garage Equipment">Smith Garage Equipment</option>
+							<option value="Snap-on Business Solutions">Snap-on Business Solutions</option>
+							<option value="Southern Equipment">Southern Equipment</option>
+							<option value="Tire Pros / ATD">Tire Pros / ATD</option>
+						</select>
+						<div class="valid-feedback">Looks good!</div>
 					</div>
 				</div>
 				<div class="row mt-4">
@@ -326,7 +593,14 @@
 										name="deal[contact]"
 										class="form-control"
 										id="contactName"
-										placeholder="Jane Doe" />
+										placeholder="Jane Doe"
+										required />
+									<div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
 								</div>
 								<div class="mb-3">
 									<label
@@ -370,7 +644,14 @@
 										name="deal[contactEmail]"
 										class="form-control"
 										id="contactEmail"
-										placeholder="JaneDoe@email.com" />
+										placeholder="JaneDoe@email.com"
+										required />
+									<div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
 								</div>
 								<div class="mb-3">
 									<label
@@ -386,6 +667,12 @@
 										class="form-control"
 										id="cellPhone"
 										placeholder="(904) 555-5555" />
+									<div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
 								</div>
 								<div class="mb-3">
 									<label
@@ -395,10 +682,16 @@
 									>
 									<input
 										type="url"
-										name="deal[companyFb]"
+										name="deal[contactFB]"
 										class="form-control"
 										id="facebook"
 										placeholder="www.facebook.com/" />
+									<div class="valid-feedback">Looks good!</div>
+									<div
+										id="validationServerUsernameFeedback"
+										class="invalid-feedback">
+										required
+									</div>
 								</div>
 							</div>
 						</div>

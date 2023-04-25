@@ -27,11 +27,11 @@ const DealSchema = new mongoose.Schema({
 	contact: String,
 	stage: {
 		type: String,
-		enum: ['Choose One', 'lead', 'inquiry', 'qualified', 'demo', 'negotiation', 'closure'],
+		enum: ['Choose One', 'Lead', 'Inquiry', 'Qualified', 'Demo', 'Negotiation', 'Closure'],
 	},
 	status: {
 		type: String,
-		enum: ['Choose One', 'open', 'won', 'lost', 'inactive'],
+		enum: ['Choose One', 'Open', 'Won', 'Lost', 'Inactive'],
 	},
 	daysOpen: Number,
 	lastActivityDate: {
@@ -53,7 +53,7 @@ const DealSchema = new mongoose.Schema({
 	},
 	zone: {
 		type: String,
-		enum: ['Choose One', 'jacksonville', 'waycross', 'yulee', 'kingsland', 'brunswick'],
+		enum: ['Choose One', 'Jacksonville', 'Waycross', 'Yulee', 'Kingsland', 'Brunswick'],
 	},
 	segment: {
 		type: String,

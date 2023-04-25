@@ -20,7 +20,7 @@ db.once('open', () => {
 // CREATING THE EXPRESS APP
 const app = express()
 
-// MIDDLEWARE
+// MIDDLEWARES
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -40,42 +40,84 @@ app.get('/', async (req, res) => {
 
 // SERVER NEW DEAL PAGE
 app.get('/deals/new', (req, res) => {
+
 	res.render('new')
 })
 
 // CREATE NEW DEAL
 app.post('/deals', async (req, res) => {
 	const deal = new Deal(req.body.deal)
+	deal.createDate = new Date()
+	deal.lastActivityDate = new Date()
 	await deal.save()
 
 	res.redirect(`/deals/${deal._id}`)
 })
+
+function formatDate(dateString) {
+	const date = new Date(dateString)
+	const month = date.getMonth() + 1
+	const day = date.getDate()
+	const year = date.getFullYear()
+	return `${month}/${day}/${year}`
+}
+
+function daysSince(date) {
+	const parsedDate = new Date(date)
+	const today = new Date()
+	const differenceInMilliseconds = today.getTime() - parsedDate.getTime()
+	const differenceInDays = differenceInMilliseconds / (1000 * 60 * 60 * 24)
+	return Math.floor(differenceInDays)
+}
 
 // SHOW PAGE
 app.get('/deals/:id', async (req, res) => {
 	const { id } = req.params
 	const deal = await Deal.findById(id)
 
-	res.render('show', { deal })
+	// FORMATS THE DATE and DAYS
+	// const localDate = new Date().toLocaleDateString()
+	const createDate = formatDate(deal.createDate)
+	const activityDate = formatDate(deal.lastActivityDate)
+	const daysActivity = daysSince(activityDate)
+	const daysCreated = daysSince(createDate)
+
+	// CONVERTS THE NUMBER FOR PRICE TO US CURRENCY
+	let USDollar = new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
+	const dealValue = `${USDollar.format(deal.value)}`
+
+	res.render('show', { deal, dealValue, createDate, activityDate, daysActivity, daysCreated })
 })
 
 // EDIT DEAL
 app.get('/deals/:id/edit', async (req, res) => {
 	const { id } = req.params
 	const deal = await Deal.findById(id)
+	const createDate = formatDate(deal.createDate)
+	const activityDate = formatDate(deal.lastActivityDate)
+	const daysActivity = daysSince(activityDate)
+	const daysCreated = daysSince(createDate)
 
-	res.render('edit', { deal })
+
+	// CONVERTS THE NUMBER FOR PRICE TO US CURRENCY
+	let USDollar = new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
+	const dealValue = `${USDollar.format(deal.value)}`
+
+	res.render('edit', { deal, dealValue, createDate, activityDate, daysActivity, daysCreated })
 })
 
 // UPDATE DEAL
 app.put('/deals/:id', async (req, res) => {
 	const { id } = req.params
-	const deal = await Deal.findByIdAndUpdate(id, { ...req.body })
-	console.log("DEAL BEFORE SAVE: ", deal) // and this
+	const deal = await Deal.findByIdAndUpdate(id, { ...req.body.deal })
 	await deal.save()
-	console.log("DEAL AFTER SAVE: ", deal) // and this
 	res.redirect(`/deals/${id}`)
-
 })
 
 
@@ -84,7 +126,7 @@ app.delete('/deals/:id', async (req, res) => {
 	const { id } = req.params
 	await Deal.findByIdAndDelete(id)
 
-	res.redirect(`/deals`)
+	res.redirect(`/`)
 })
 
 

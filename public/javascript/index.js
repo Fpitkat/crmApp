@@ -1,4 +1,4 @@
-const zones = ['jacksonville', 'brunswick', 'waycross', 'kingsland', 'yulee']
+
 
 function formatPhoneNumber(event) {
 	const input = event.target
@@ -88,36 +88,6 @@ new Chart(marketSegment, {
 	},
 });
 
-(function () {
-	'use strict'
 
-	// Fetch all the forms we want to apply custom Bootstrap validation styles to
-	const forms = document.querySelectorAll('.validated-form')
 
-	// Loop over them and prevent submission
-	Array.from(forms).forEach(function (form) {
-		form.addEventListener(
-			'submit',
-			function (event) {
-				if (!form.checkValidity()) {
-					event.preventDefault()
-					event.stopPropagation()
-				}
 
-				form.classList.add('was-validated')
-			},
-			false
-		)
-	})
-})()
-
-const date = new Date()
-const shortDate = (((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + date.getFullYear())
-
-const daysLastActivity = document.getElementById('daysLastActivity')
-// const daysLastActivityText 
-// date.getMonth()     // 11
-// date.getDate()      // 29
-// date.getFullYear()  // 2011
-
-alert(daysLastActivity.length)
