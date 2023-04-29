@@ -13,7 +13,7 @@
 
           <div class="mb-2 col-md-6">
             <label for="company" class="form-label text-muted">Company</label>
-            <input type="text" value="<%= deal.company %>" class="form-control" id="company" placeholder="Joe's Automotive" name="deal[company]"disabled/>
+            <input type="text" value="<%= deal.company %>" class="form-control" id="company" placeholder="Joe's Automotive" name="deal[company]" disabled />
           </div>
 
           <div class="mb-2 col-md-3">
@@ -54,42 +54,42 @@
 
           <div class="mb-2 col-md-6">
             <label for="address" class="form-label text-muted">Address</label>
-            <input type="text" class="form-control" value="<%= deal.street  %>" id="address" placeholder="123 Main Street" disabled/>
+            <input type="text" class="form-control" value="<%= deal.street  %>" id="address" placeholder="123 Main Street" disabled />
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="city" class="form-label text-muted">City</label>
-            <input type="text" value="<%= deal.city  %>" class="form-control" id="city" placeholder="Jacksonville" disabled/>
+            <input type="text" value="<%= deal.city  %>" class="form-control" id="city" placeholder="Jacksonville" disabled />
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="state" class="form-label text-muted">State</label>
-            <input type="text" value="<%= deal.state  %>" class="form-control" id="state" placeholder="Florida" disabled/>
+            <input type="text" value="<%= deal.state  %>" class="form-control" id="state" placeholder="Florida" disabled />
           </div>
 
           <div class="mb-2 col-md-2">
             <label for="zip" class="form-label text-muted">Zip</label>
-            <input type="number" value="<%= deal.zip  %>" class="form-control" id="zip" placeholder="32210" disabled/>
+            <input type="number" value="<%= deal.zip  %>" class="form-control" id="zip" placeholder="32210" disabled />
           </div>
 
           <div class="mb-2 col-md-4">
             <label for="phone" class="form-label text-muted">Phone <i class="fa-sharp fa-solid fa-phone-intercom"></i></label>
             <a href="tel:<%= deal.companyPhone  %>">
-              <input type="tel" value="<%= deal.companyPhone  %>" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="phone" placeholder="(904) 555-5555" disabled/>
+              <input type="tel" value="<%= deal.companyPhone  %>" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="phone" placeholder="(904) 555-5555" disabled />
             </a>
           </div>
 
           <div class="mb-2 col-md-4">
             <label for="linkedin" class="form-label text-muted">LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i></label>
             <a href="<%= deal.companyLinkedIn  %>" target="_blank" rel="noopener noreferrer">
-              <input type="url" name='deal[companyLinkedIn]' value="<%= deal.companyLinkedIn  %>" class="form-control" id="linkedin" placeholder="www.linkedin.com" disabled/>
+              <input type="url" name='deal[companyLinkedIn]' value="<%= deal.companyLinkedIn  %>" class="form-control" id="linkedin" placeholder="www.linkedin.com" disabled />
             </a>
           </div>
 
           <div class="mb-4 col-md-4">
             <label for="website" class="form-label text-muted">Website <i class="fa-solid fa-arrow-up-right-from-square"></i></label>
             <a href="<%= deal.companyWebsite  %>" target="_blank" rel="noopener noreferrer">
-              <input type="url" value="<%= deal.companyWebsite  %>" class="form-control" id="website" placeholder="www.yourwebsite.com" disabled/>
+              <input type="url" value="<%= deal.companyWebsite  %>" class="form-control" id="website" placeholder="www.yourwebsite.com" disabled />
             </a>
           </div>
         </div>
@@ -102,7 +102,7 @@
 
           <div class="mb-2 col-md-6">
             <label for="dealName" class="form-label text-muted">Deal Name</label>
-            <input name='deal[dealName]' type="text" value="<%= deal.dealName  %>" class="form-control" id="dealName" placeholder="HawkEye Elite" disabled/>
+            <input name='deal[dealName]' type="text" value="<%= deal.dealName  %>" class="form-control" id="dealName" placeholder="HawkEye Elite" disabled />
           </div>
 
           <div class="mb-2 col-md-2">
@@ -126,7 +126,7 @@
 
           <div class="mb-2 col-md-2">
             <label for="createDate" class="form-label text-muted">Created Date</label>
-            
+
             <p class="pt-1"><%= createDate %></p>
           </div>
 
@@ -161,7 +161,7 @@
 
           <div class="mb-2 col-md-2">
             <label for="value" class="form-label text-muted">Value</label>
-            <input type="text" value="<%= dealValue %>" class="form-control input-group" id="value" placeholder="$35,000" disabled/>
+            <input type="text" value="<%= dealValue %>" class="form-control input-group" id="value" placeholder="$35,000" disabled />
           </div>
 
           <div class="mb-2 col-md-2">
@@ -268,13 +268,13 @@
 
                 <div class="mb-2">
                   <label for="contactName" class="form-label text-muted">Contact Name</label>
-                  <input type="text" value="<%= deal.contact  %>" class="form-control" id="contactName" placeholder="Jane Doe" disabled/>
+                  <input type="text" value="<%= deal.contact  %>" class="form-control" id="contactName" placeholder="Jane Doe" disabled />
                 </div>
 
                 <div class="mb-2">
                   <label for="directPhone" class="form-label text-muted">Direct Phone <i class="fa-sharp fa-solid fa-phone-intercom"></i></label>
                   <a href="tel:<%= deal.contactDirect  %>">
-                    <input type="tel" value="<%= deal.contactDirect  %>" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="directPhone" placeholder="(904) 555-5555" disabled/>
+                    <input type="tel" value="<%= deal.contactDirect  %>" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="directPhone" placeholder="(904) 555-5555" disabled />
                   </a>
                 </div>
 
@@ -290,20 +290,20 @@
                 <div class="mb-2">
                   <label for="contactEmail" class="form-label text-muted">Contact Email <i class="fa-solid fa-envelope"></i></label>
                   <a href="mailto:<%= deal.contactEmail  %>">
-                    <input type="email" value="<%= deal.contactEmail  %>" class="form-control" id="contactEmail" placeholder="JaneDoe@email.com" disabled/>
+                    <input type="email" value="<%= deal.contactEmail  %>" class="form-control" id="contactEmail" placeholder="JaneDoe@email.com" disabled />
                   </a>
                 </div>
 
                 <div class="mb-2">
                   <label for="cellPhone" class="form-label text-muted">Cell Phone <i class="fa-solid fa-mobile-retro"></i></label>
                   <a href="tel:<%= deal.contactCell  %>">
-                    <input type="tel" value="<%= deal.contactCell  %>" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="cellPhone" placeholder="(904) 555-5555" disabled/>
+                    <input type="tel" value="<%= deal.contactCell  %>" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="cellPhone" placeholder="(904) 555-5555" disabled />
                   </a>
                 </div>
 
                 <div class="mb-2">
                   <label for="facebook" class="form-label text-muted">Facebook <i class="fa-solid fa-arrow-up-right-from-square"></i></label>
-                  <a href="<%= deal.contactFB  %>" target="_blank"><input type="url" value="<%= deal.contactFB  %>" class="form-control" id="facebook" placeholder="www.facebook.com/" disabled/></a>
+                  <a href="<%= deal.contactFB  %>" target="_blank"><input type="url" value="<%= deal.contactFB  %>" class="form-control" id="facebook" placeholder="www.facebook.com/" disabled /></a>
                 </div>
 
               </div>
@@ -318,9 +318,6 @@
             <i class="fa-solid fa-calendar-lines-pen"></i> History Details
           </h4>
           <hr />
-         
-
-          
 
           <div class="btn-group gap-1 mb-5 text-muted" role="group" aria-label="Basic example">
             <a href="/deals/<%= deal._id %>/edit" class="btn btn-dark mt-4">Edit</a>
@@ -330,4 +327,3 @@
     </div>
   </form>
 </div>
-

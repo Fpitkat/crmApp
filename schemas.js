@@ -1,4 +1,4 @@
-const Joi = require('joi')
+const Joi = require("joi");
 
 module.exports.dealSchema = Joi.object({
   deal: Joi.object({
@@ -7,10 +7,10 @@ module.exports.dealSchema = Joi.object({
     city: Joi.string().required(),
     state: Joi.string().required(),
     zip: Joi.string().required(),
-    companyLinkedIn: Joi.string(),
-    companyWebsite: Joi.string(),
-    contactLinkedin: Joi.string(),
-    contactFB: Joi.string(),
+    companyLinkedIn: Joi.string().optional().allow(""),
+    companyWebsite: Joi.string().optional().allow(""),
+    contactLinkedin: Joi.string().optional().allow(""),
+    contactFB: Joi.string().optional().allow(""),
     contactEmail: Joi.string().required(),
     priority: Joi.number().required().min(1).max(11),
     hot: Joi.boolean().required(),
@@ -18,27 +18,149 @@ module.exports.dealSchema = Joi.object({
     contact: Joi.string().required(),
     stage: Joi.string().required(),
     status: Joi.string().required(),
-    daysOpen: Joi.number().min(0),
+    daysOpen: Joi.number().min(0).optional().allow(""),
     lastActivityDays: Joi.number().min(0),
     companyPhone: Joi.string().required(),
-    contactDirect: Joi.string(),
-    contactCell: Joi.string(),
+    contactDirect: Joi.string().optional().allow(""),
+    contactCell: Joi.string().optional().allow(""),
     value: Joi.number().required().min(0),
     dealName: Joi.string().required(),
-    type: Joi.string(),
-    open: Joi.number().min(0),
-    createDate: Joi.date(),
+    open: Joi.number().min(0).optional().allow(""),
+    createDate: Joi.date().optional().allow(""),
     zone: Joi.string().required(),
     segment: Joi.string().required(),
     source: Joi.string().required(),
     distributor: Joi.string().required(),
-    competition: Joi.string(),
-    reason: Joi.string(),
-    closed: Joi.date(),
-    lostReason: Joi.string(),
-    notes: Joi.array()
+    competition: Joi.string().optional().allow(""),
+    reason: Joi.string().optional().allow(""),
+    closed: Joi.date().optional().allow(""),
+    lostReason: Joi.string().optional().allow(""),
+    notes: Joi.array(),
+  })
+    .required()
+    .options({ allowUnknown: true }),
+});
 
-
-  }).required()
-})
-
+module.exports.TESTSchema = Joi.object({
+  company: Joi.string().required(),
+  street: Joi.string().required(),
+  city: Joi.string().required(),
+  state: Joi.string().required(),
+  zip: Joi.string().required(),
+  companyPhone: Joi.string().required(),
+  social: Joi.object({
+    companyLinkedIn: Joi.string(),
+    companyWebsite: Joi.string(),
+  }),
+  deal: Joi.array().items(
+    Joi.object({
+      createDate: Joi.date(),
+      dealName: Joi.string().required(),
+      priority: Joi.number().integer().min(1).max(11),
+      hot: Joi.boolean(),
+      hd: Joi.boolean(),
+      stage: Joi.string().valid(
+        "Choose One",
+        "Lead",
+        "Inquiry",
+        "Qualified",
+        "Demo",
+        "Negotiation",
+        "Closure"
+      ),
+      status: Joi.string().valid(
+        "Choose One",
+        "Open",
+        "Won",
+        "Lost",
+        "Inactive"
+      ),
+      daysOpen: Joi.number().integer(),
+      type: Joi.string(),
+      lastActivityDate: Joi.date(),
+      value: Joi.number(),
+      closed: Joi.date(),
+      zone: Joi.string().valid(
+        "Choose One",
+        "Jacksonville",
+        "Waycross",
+        "Yulee",
+        "Kingsland",
+        "Brunswick"
+      ),
+      segment: Joi.string().valid(
+        "Choose One",
+        "Auto Dealer",
+        "Tire Dealer",
+        "General Repair",
+        "Body Shop",
+        "Government",
+        "Specialty"
+      ),
+      source: Joi.string().valid(
+        "Choose One",
+        "Asbury Group",
+        "AutoNation",
+        "Dealer Solutions & Design",
+        "DES",
+        "Florida Equipment",
+        "Florida Tire Supply",
+        "HELM",
+        "Hunter",
+        "Independent Tire Dealer Group",
+        "Lewis Tool",
+        "Mohawk",
+        "Mongoose",
+        "Morgan Auto Group",
+        "National Account - A Quota",
+        "National Account - B Quota",
+        "Rotunda / Ford",
+        "Smith Garage Equipment",
+        "Snap-on Business Solutions",
+        "Southern Equipment",
+        "Tire Pros / ATD"
+      ),
+      distributor: Joi.string().valid(
+        "Choose One",
+        "Asbury Group",
+        "AutoNation",
+        "Dealer Solutions & Design",
+        "DES",
+        "Florida Equipment",
+        "Florida Tire Supply",
+        "HELM",
+        "Hunter",
+        "Independent Tire Dealer Group",
+        "Lewis Tool",
+        "Mohawk",
+        "Mongoose",
+        "Morgan Auto Group",
+        "National Account - A Quota",
+        "National Account - B Quota",
+        "Rotunda / Ford",
+        "Smith Garage Equipment",
+        "Snap-on Business Solutions",
+        "Southern Equipment",
+        "Tire Pros / ATD"
+      ),
+      competition: Joi.string(),
+      lostReason: Joi.string(),
+      reason: Joi.string(),
+      notes: Joi.array().items(Joi.string()),
+    })
+  ),
+  contact: Joi.array().items(
+    Joi.object({
+      contact: Joi.string().required(),
+      contactEmail: Joi.string(),
+      phone: Joi.object({
+        contactDirect: Joi.string(),
+        contactCell: Joi.string(),
+      }),
+      social: Joi.object({
+        contactLinkedin: Joi.string(),
+        contactFB: Joi.string(),
+      }),
+    })
+  ),
+});
