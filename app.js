@@ -14,6 +14,7 @@ mongoose.connect("mongodb://localhost:27017/crmApp", {
   useUnifiedTopology: true,
 });
 
+// CHECKING IF THE CONNECTION IS SUCCESSFUL
 const db = mongoose.connection;
 db.on(
   "error",
@@ -26,15 +27,19 @@ db.once("open", () => {
 // CREATING THE EXPRESS APP
 const app = express();
 
-// MIDDLEWARES
+// SETTING UP THE EJS AND PUBLIC FOLDER
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+// ALLOWS POST REQUESTS
 app.use(express.urlencoded({ extended: true }));
+// ALLOWS PUT AND DELETE REQUESTS
 app.use(methodOverride("_method"));
+// SERVES THE PUBLIC FOLDER
 app.use(express.static(path.join(__dirname, "public")));
 
+// VALIDATION MIDDLEWARE
 const validateDeal = (req, res, next) => {
   const { error } = dealSchema.validate(req.body);
   if (error) {
@@ -64,6 +69,7 @@ app.get("/deals/new", (req, res) => {
   res.render("new");
 });
 
+// CREATE NEW DEAL
 app.post(
   "/deals",
   validateDeal,
@@ -77,6 +83,7 @@ app.post(
   })
 );
 
+// FORMATS THE DATE
 function formatDate(dateString) {
   const date = new Date(dateString);
   const month = date.getMonth() + 1;

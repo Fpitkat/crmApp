@@ -1,336 +1,142 @@
 <% layout('layouts/boilerplate')%>
 <div class="container">
-  <form
-    action="/deals"
-    method="post"
-    class="validated-form"
-    novalidate
-  >
+  <form action="/deals" method="post" class="validated-form" novalidate>
     <div class="row gx-5">
       <div class="col-lg-12">
         <div class="row mt-4">
           <h4 class="text-dark">
-            <i
-              class="fa-sharp fa-solid fa-buildings text-muted"
-            ></i>
+            <i class="fa-sharp fa-solid fa-buildings text-muted"></i>
             Company Details
           </h4>
           <hr />
           <div class="mb-3 col-md-6">
-            <label
-              for="company"
-              class="form-label text-muted"
-              >Company</label
-            >
-            <input
-              type="text"
-              name="deal[company]"
-              class="form-control"
-              id="company"
-              placeholder="Joe's Automotive"
-              required
-            />
+            <label for="company" class="form-label text-muted">Company</label>
+            <input type="text" name="deal[company]" class="form-control" id="company" placeholder="Joe's Automotive" required />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-3">
-            <label for="hot" class="form-label text-muted"
-              >Hot</label
-            >
-            <select
-              id="hot"
-              class="form-select"
-              name="deal[hot]"
-              aria-label="Default select example"
-              required
-            >
+            <label for="hot" class="form-label text-muted">Hot</label>
+            <select id="hot" class="form-select" name="deal[hot]" aria-label="Default select example" required>
               <option value="true">True</option>
               <option value="false" selected>False</option>
             </select>
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-3">
-            <label for="hd" class="form-label text-muted"
-              >HD</label
-            >
-            <select
-              id="hd"
-              name="deal[hd]"
-              class="form-select"
-              aria-label="Default select example"
-              required
-            >
+            <label for="hd" class="form-label text-muted">HD</label>
+            <select id="hd" name="deal[hd]" class="form-select" aria-label="Default select example" required>
               <option value="true">True</option>
               <option value="false" selected>False</option>
             </select>
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-6">
-            <label
-              for="address"
-              class="form-label text-muted"
-              >Address</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              name="deal[street]"
-              id="address"
-              placeholder="123 Main Street"
-              required
-            />
+            <label for="address" class="form-label text-muted">Address</label>
+            <input type="text" class="form-control" name="deal[street]" id="address" placeholder="123 Main Street" required />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label for="city" class="form-label text-muted"
-              >City</label
-            >
-            <input
-              type="text"
-              name="deal[city]"
-              class="form-control"
-              id="city"
-              placeholder="Jacksonville"
-              required
-            />
+            <label for="city" class="form-label text-muted">City</label>
+            <input type="text" name="deal[city]" class="form-control" id="city" placeholder="Jacksonville" required />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label for="state" class="form-label text-muted"
-              >State</label
-            >
-            <input
-              type="text"
-              name="deal[state]"
-              class="form-control"
-              id="state"
-              placeholder="Florida"
-              required
-            />
+            <label for="state" class="form-label text-muted">State</label>
+            <input type="text" name="deal[state]" class="form-control" id="state" placeholder="Florida" required />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label for="zip" class="form-label text-muted"
-              >Zip</label
-            >
-            <input
-              name="deal[zip]"
-              type="number"
-              class="form-control"
-              id="zip"
-              placeholder="32210"
-              required
-            />
+            <label for="zip" class="form-label text-muted">Zip</label>
+            <input name="deal[zip]" type="number" class="form-control" id="zip" placeholder="32210" required />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-4">
-            <label for="phone" class="form-label text-muted"
-              >Phone</label
-            >
-            <input
-              type="text"
-              name="deal[companyPhone]"
-              oninput="formatPhoneNumber(event)"
-              maxlength="14"
-              class="form-control"
-              id="phone"
-              placeholder="(904) 555-5555"
-              required
-            />
+            <label for="phone" class="form-label text-muted">Phone</label>
+            <input type="text" name="deal[companyPhone]" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="phone" placeholder="(904) 555-5555" required />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-4">
-            <label
-              for="linkedin"
-              class="form-label text-muted"
-              >LinkedIn</label
-            >
-            <input
-              type="text"
-              name="deal[companyLinkedin]"
-              class="form-control"
-              id="linkedin"
-              placeholder="www.linkedin.com"
-            />
+            <label for="linkedin" class="form-label text-muted">LinkedIn</label>
+            <input type="text" name="deal[companyLinkedin]" class="form-control" id="linkedin" placeholder="www.linkedin.com" />
           </div>
           <div class="mb-3 col-md-4">
-            <label
-              for="website"
-              class="form-label text-muted"
-              >Website</label
-            >
-            <input
-              type="text"
-              name="deal[companyWebsite]"
-              class="form-control"
-              id="website"
-              placeholder="www.yourwebsite.com"
-            />
+            <label for="website" class="form-label text-muted">Website</label>
+            <input type="text" name="deal[companyWebsite]" class="form-control" id="website" placeholder="www.yourwebsite.com" />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
         </div>
         <div class="row mt-4">
           <h4 class="text-dark">
-            <i
-              class="fa-solid fa-display-chart-up-circle-dollar text-muted"
-            ></i>
+            <i class="fa-solid fa-display-chart-up-circle-dollar text-muted"></i>
             Deal Details
           </h4>
           <hr />
           <div class="mb-3 col-md-6">
-            <label
-              for="dealName"
-              class="form-label text-muted"
-              >Deal Name</label
-            >
-            <input
-              type="text"
-              name="deal[dealName]"
-              class="form-control"
-              id="dealName"
-              placeholder="HawkEye Elite"
-              required
-            />
+            <label for="dealName" class="form-label text-muted">Deal Name</label>
+            <input type="text" name="deal[dealName]" class="form-control" id="dealName" placeholder="HawkEye Elite" required />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label
-              for="priority"
-              class="form-label text-muted"
-              >Priority</label
-            >
-            <select
-              id="priority"
-              name="deal[priority]"
-              class="form-select"
-              aria-label="Default select example"
-              required
-            >
+            <label for="priority" class="form-label text-muted">Priority</label>
+            <select id="priority" name="deal[priority]" class="form-select" aria-label="Default select example" required>
               <% for(let i=11; i> 0; i-- ) { %>
               <option value="<%= i %>"><%= i %></option>
               <% } %>
             </select>
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label
-              for="createDate"
-              class="form-label text-muted"
-              >Created</label
-            >
-            <input
-              type="date"
-              name="deal[createDate]"
-              class="form-control"
-              id="createDate"
-              placeholder="03/10/2022"
-              disabled
-            />
+            <label for="createDate" class="form-label text-muted">Created</label>
+            <input type="date" name="deal[createDate]" class="form-control" id="createDate" placeholder="03/10/2022" disabled />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label
-              for="daysOpen"
-              class="form-label text-muted"
-              >Days Open</label
-            >
-            <input
-              type="number"
-              name="deal[daysOpen]"
-              class="form-control"
-              id="daysOpen"
-              placeholder="0"
-              disabled
-            />
+            <label for="daysOpen" class="form-label text-muted">Days Open</label>
+            <input type="number" name="deal[daysOpen]" class="form-control" id="daysOpen" placeholder="0" disabled />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-3">
-            <label for="stage" class="form-label text-muted"
-              >Stage</label
-            >
-            <select
-              class="form-select"
-              name="deal[stage]"
-              aria-label="Default select example"
-              required
-            >
+            <label for="stage" class="form-label text-muted">Stage</label>
+            <select class="form-select" name="deal[stage]" aria-label="Default select example" required>
               <option selected disabled value="Choose One">
                 Choose One
               </option>
@@ -346,25 +152,13 @@
               <option value="Closure">Closure</option>
             </select>
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-3">
-            <label
-              for="status"
-              class="form-label text-muted"
-              >Status</label
-            >
-            <select
-              class="form-select"
-              name="deal[status]"
-              aria-label="Default select example"
-              required
-            >
+            <label for="status" class="form-label text-muted">Status</label>
+            <select class="form-select" name="deal[status]" aria-label="Default select example" required>
               <option selected>Choose One</option>
               <option value="Open" selected>Open</option>
               <option value="Won">Won</option>
@@ -372,89 +166,37 @@
               <option value="Inactive">Inactive</option>
             </select>
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label for="value" class="form-label text-muted"
-              >Value</label
-            >
-            <input
-              type="text"
-              name="deal[value]"
-              class="form-control input-group"
-              id="value"
-              placeholder="$35,000"
-              required
-            />
+            <label for="value" class="form-label text-muted">Value</label>
+            <input type="text" name="deal[value]" class="form-control input-group" id="value" placeholder="$35,000" required />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label
-              for="activityDate"
-              class="form-label text-muted"
-              >Last Activity</label
-            >
-            <input
-              type="date"
-              name="deal[lastActivityDate]"
-              class="form-control"
-              id="activityDate"
-              placeholder="03/10/2022"
-              disabled
-            />
+            <label for="activityDate" class="form-label text-muted">Last Activity</label>
+            <input type="date" name="deal[lastActivityDate]" class="form-control" id="activityDate" placeholder="03/10/2022" disabled />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="mb-3 col-md-2">
-            <label
-              for="daysLastActivity"
-              class="form-label text-muted"
-              >Last Activity</label
-            >
-            <input
-              type="number"
-              name="deal[lastActivityDays]"
-              class="form-control"
-              id="daysLastActivity"
-              placeholder="0"
-              disabled
-            />
+            <label for="daysLastActivity" class="form-label text-muted">Last Activity</label>
+            <input type="number" name="deal[lastActivityDays]" class="form-control" id="daysLastActivity" placeholder="0" disabled />
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="col-lg-6 mb-2">
-            <label
-              for="market"
-              class="form-label text-muted"
-              >Segment</label
-            >
-            <select
-              class="form-select is-invalid"
-              aria-label="Default select example"
-              name="deal[segment]"
-              required
-            >
+            <label for="market" class="form-label text-muted">Segment</label>
+            <select class="form-select is-invalid" aria-label="Default select example" name="deal[segment]" required>
               <option selected disabled value="">
                 Choose One
               </option>
@@ -472,22 +214,13 @@
               <option value="Specialty">Specialty</option>
             </select>
             <div class="valid-feedback">Looks good!</div>
-            <div
-              id="validationServerUsernameFeedback"
-              class="invalid-feedback"
-            >
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">
               required
             </div>
           </div>
           <div class="col-lg-6 mb-2">
-            <label for="zone" class="form-label text-muted"
-              >Zone</label
-            >
-            <select
-              class="form-select is-invalid"
-              name="deal[zone]"
-              required
-            >
+            <label for="zone" class="form-label text-muted">Zone</label>
+            <select class="form-select is-invalid" name="deal[zone]" required>
               <option selected disabled value="">
                 Choose One
               </option>
@@ -502,16 +235,8 @@
             <div class="valid-feedback">Looks good!</div>
           </div>
           <div class="mb-2 col-lg-6">
-            <label
-              for="source"
-              class="form-label text-muted"
-              >Lead Source</label
-            >
-            <select
-              class="form-select is-invalid"
-              name="deal[source]"
-              required
-            >
+            <label for="source" class="form-label text-muted">Lead Source</label>
+            <select class="form-select is-invalid" name="deal[source]" required>
               <option selected disabled value="">
                 Choose One
               </option>
@@ -565,16 +290,8 @@
             <div class="valid-feedback">Looks good!</div>
           </div>
           <div class="mb-2 col-lg-6">
-            <label
-              for="source"
-              class="form-label text-muted"
-              >Distributor</label
-            >
-            <select
-              class="form-select is-invalid"
-              name="deal[distributor]"
-              required
-            >
+            <label for="source" class="form-label text-muted">Distributor</label>
+            <select class="form-select is-invalid" name="deal[distributor]" required>
               <option selected disabled value="">
                 Choose One
               </option>
@@ -631,139 +348,59 @@
         <div class="row mt-4">
           <div class="col-md-12">
             <h4 class="text-dark">
-              <i
-                class="fa-solid fa-address-book text-muted"
-              ></i>
+              <i class="fa-solid fa-address-book text-muted"></i>
               Contact Details
             </h4>
             <hr />
             <div class="row">
               <div class="col-md-6">
                 <div class="mb-3">
-                  <label
-                    for="contactName"
-                    class="form-label text-muted"
-                    >Contact Name</label
-                  >
-                  <input
-                    type="text"
-                    name="deal[contact]"
-                    class="form-control"
-                    id="contactName"
-                    placeholder="Jane Doe"
-                    required
-                  />
+                  <label for="contactName" class="form-label text-muted">Contact Name</label>
+                  <input type="text" name="deal[contact]" class="form-control" id="contactName" placeholder="Jane Doe" required />
                   <div class="valid-feedback">
                     Looks good!
                   </div>
-                  <div
-                    id="validationServerUsernameFeedback"
-                    class="invalid-feedback"
-                  >
+                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     required
                   </div>
                 </div>
                 <div class="mb-3">
-                  <label
-                    for="directPhone"
-                    class="form-label text-muted"
-                    >Direct Phone</label
-                  >
-                  <input
-                    type="text"
-                    name="deal[contactDirect]"
-                    oninput="formatPhoneNumber(event)"
-                    maxlength="14"
-                    class="form-control"
-                    id="directPhone"
-                    placeholder="(904) 555-5555"
-                  />
+                  <label for="directPhone" class="form-label text-muted">Direct Phone</label>
+                  <input type="text" name="deal[contactDirect]" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="directPhone" placeholder="(904) 555-5555" />
                 </div>
                 <div class="mb-3">
-                  <label
-                    for="linkedin"
-                    class="form-label text-muted"
-                    >LinkedIn</label
-                  >
-                  <input
-                    type="text"
-                    name="deal[contactLinkedin]"
-                    class="form-control"
-                    id="linkedin"
-                    placeholder="www.linkedin.com"
-                  />
+                  <label for="linkedin" class="form-label text-muted">LinkedIn</label>
+                  <input type="text" name="deal[contactLinkedin]" class="form-control" id="linkedin" placeholder="www.linkedin.com" />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
-                  <label
-                    for="contactEmail"
-                    class="form-label text-muted"
-                    >Contact Email</label
-                  >
-                  <input
-                    type="text"
-                    name="deal[contactEmail]"
-                    class="form-control"
-                    id="contactEmail"
-                    placeholder="JaneDoe@email.com"
-                    required
-                  />
+                  <label for="contactEmail" class="form-label text-muted">Contact Email</label>
+                  <input type="text" name="deal[contactEmail]" class="form-control" id="contactEmail" placeholder="JaneDoe@email.com" required />
                   <div class="valid-feedback">
                     Looks good!
                   </div>
-                  <div
-                    id="validationServerUsernameFeedback"
-                    class="invalid-feedback"
-                  >
+                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     required
                   </div>
                 </div>
                 <div class="mb-3">
-                  <label
-                    for="cellPhone"
-                    class="form-label text-muted"
-                    >Cell Phone</label
-                  >
-                  <input
-                    type="text"
-                    name="deal[contactCell]"
-                    oninput="formatPhoneNumber(event)"
-                    maxlength="14"
-                    class="form-control"
-                    id="cellPhone"
-                    placeholder="(904) 555-5555"
-                  />
+                  <label for="cellPhone" class="form-label text-muted">Cell Phone</label>
+                  <input type="text" name="deal[contactCell]" oninput="formatPhoneNumber(event)" maxlength="14" class="form-control" id="cellPhone" placeholder="(904) 555-5555" />
                   <div class="valid-feedback">
                     Looks good!
                   </div>
-                  <div
-                    id="validationServerUsernameFeedback"
-                    class="invalid-feedback"
-                  >
+                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     required
                   </div>
                 </div>
                 <div class="mb-3">
-                  <label
-                    for="facebook"
-                    class="form-label text-muted"
-                    >Facebook</label
-                  >
-                  <input
-                    type="text"
-                    name="deal[contactFB]"
-                    class="form-control"
-                    id="facebook"
-                    placeholder="www.facebook.com/"
-                  />
+                  <label for="facebook" class="form-label text-muted">Facebook</label>
+                  <input type="text" name="deal[contactFB]" class="form-control" id="facebook" placeholder="www.facebook.com/" />
                   <div class="valid-feedback">
                     Looks good!
                   </div>
-                  <div
-                    id="validationServerUsernameFeedback"
-                    class="invalid-feedback"
-                  >
+                  <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     required
                   </div>
                 </div>
@@ -774,11 +411,7 @@
       </div>
       <div class="col-lg-4">
         <div class="row mt-4">
-          <div
-            class="btn-group gap-1 mb-5 text-muted"
-            role="group"
-            aria-label="Basic example"
-          >
+          <div class="btn-group gap-1 mb-5 text-muted" role="group" aria-label="Basic example">
             <button class="btn btn-dark mt-4">Save</button>
           </div>
         </div>
