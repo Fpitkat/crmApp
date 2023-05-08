@@ -11,6 +11,7 @@
   <div class="col-md-6 wrapper">
     <h3 class="text-center text-muted fs-4">
       <i class="fa-duotone fa-chart-simple"></i>
+
       Deals by Market Segment
     </h3>
     <canvas id="marketSegment"></canvas>
@@ -18,9 +19,7 @@
 </div>
 <div class="table-responsive mt-4">
   <h3 class="text-center text-muted fs-4 mt-5">
-    <i
-      class="fa-duotone fa-chart-mixed-up-circle-dollar"
-    ></i>
+    <i class="fa-duotone fa-chart-mixed-up-circle-dollar"></i>
     New Deals
   </h3>
   <table class="table table-hover table-bordered">
@@ -62,11 +61,7 @@
         <td><%= deal.zone %></td>
         <td><%= deal.distributor %></td>
         <td class="text-center">
-          <a href="/deals/<%= deal._id %>/edit"
-            ><i
-              class="fa-duotone fa-money-check-dollar-pen"
-            ></i
-          ></a>
+          <a href="/deals/<%= deal._id %>/edit"><i class="fa-duotone fa-money-check-dollar-pen"></i></a>
         </td>
       </tr>
       <% } %>

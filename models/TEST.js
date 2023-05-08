@@ -155,3 +155,5 @@ const DealSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Deal", DealSchema);
+
+

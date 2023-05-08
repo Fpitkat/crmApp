@@ -41,32 +41,21 @@ const DealSchema = new mongoose.Schema({
     type: String,
     enum: ["Choose One", "Open", "Won", "Lost", "Inactive"],
   },
+  createDate: {
+    type: Date,
+    default: Date.now,
+  },
   daysOpen: {
     type: Number,
-    default: function () {
-      const today = new Date();
-      const diffTime = Math.abs(today - this.createDate);
-      const diffDays = Math.floor(
-        diffTime / (1000 * 60 * 60 * 24)
-      );
-      return diffDays;
-    },
+    default: 0,
   },
   lastActivityDate: {
     type: Date,
   },
+
   lastActivityDays: {
     type: Number,
-    default: function () {
-      const today = new Date();
-      const diffTime = Math.abs(
-        today - this.lastActivityDate
-      );
-      const diffDays = Math.floor(
-        diffTime / (1000 * 60 * 60 * 24)
-      );
-      return diffDays;
-    },
+    default: 0,
   },
   companyPhone: String,
   contactDirect: String,
@@ -75,9 +64,6 @@ const DealSchema = new mongoose.Schema({
   dealName: String,
   notes: Array,
   open: Number,
-  createDate: {
-    type: Date,
-  },
   zone: {
     type: String,
     enum: [
@@ -158,5 +144,12 @@ const DealSchema = new mongoose.Schema({
   closed: Date,
   lostReason: String,
 });
+
+// DealSchema.pre("save", function (next) {
+//   this.lastActivityDays = Math.floor(
+//     (Date.now() - this.lastActivityDate) / 86400000
+//   );
+//   next();
+// });
 
 module.exports = mongoose.model("Deal", DealSchema);

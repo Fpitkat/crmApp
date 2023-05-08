@@ -6,6 +6,7 @@ const { dealSchema } = require("./schemas.js");
 const catchAsync = require("./utils/catchAsync");
 const ExpressError = require("./utils/ExpressError");
 const Deal = require("./models/deal");
+const cron = require("node-cron");
 const methodOverride = require("method-override");
 
 // CONNECTING TO THE MONGODB
@@ -24,19 +25,25 @@ db.once("open", () => {
   console.log("Database connected");
 });
 
-// CREATING THE EXPRESS APP
+// UPDATES THE DAYS OPEN EVERY DAY AT MIDNIGHT
+cron.schedule("0 0 * * * *", async function () {
+  const deals = await Deal.find();
+  deals.forEach(async function (deal) {
+    deal.lastActivityDays = Math.floor(
+      (Date.now() - deal.lastActivityDate) / 86400000
+    );
+    await deal.save();
+  });
+});
+
 const app = express();
 
-// SETTING UP THE EJS AND PUBLIC FOLDER
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// ALLOWS POST REQUESTS
 app.use(express.urlencoded({ extended: true }));
-// ALLOWS PUT AND DELETE REQUESTS
 app.use(methodOverride("_method"));
-// SERVES THE PUBLIC FOLDER
 app.use(express.static(path.join(__dirname, "public")));
 
 // VALIDATION MIDDLEWARE
@@ -52,14 +59,12 @@ const validateDeal = (req, res, next) => {
   }
 };
 
-// GET ALL DEALS
+// HOME PAGE
 app.get(
   "/",
   catchAsync(async (req, res) => {
+    // GETS ALL THE DEALS FROM THE DATABASE
     const deals = await Deal.find({});
-    const daysSinceLastActivity = daysSince(
-      deals.lastActivityDate
-    );
     res.render("deals", { deals });
   })
 );
@@ -75,6 +80,7 @@ app.post(
   validateDeal,
   catchAsync(async (req, res) => {
     const deal = new Deal(req.body.deal);
+
     deal.createDate = new Date();
     deal.lastActivityDate = new Date();
     await deal.save();
@@ -84,13 +90,30 @@ app.post(
 );
 
 // FORMATS THE DATE
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const year = date.getFullYear();
+function formatDate(isoDate) {
+  // Convert ISO date to UTC date
+  const date = new Date(isoDate);
+  // Convert UTC date to EST date
+  const estDate = new Date(
+    date.toLocaleString("en-US", {
+      timeZone: "America/New_York",
+    })
+  );
+  // Get month, day, and year in EST
+  const month = estDate.getMonth() + 1; // getMonth() returns 0-indexed month, so we add 1
+  const day = estDate.getDate();
+  const year = estDate.getFullYear();
+  // Format date as "mm/dd/yyyy"
   return `${month}/${day}/${year}`;
 }
+
+// function formatDate(dateString) {
+//   const date = new Date(dateString);
+//   const month = date.getMonth() + 1;
+//   const day = date.getDate();
+//   const year = date.getFullYear();
+//   return `${month}/${day}/${year}`;
+// }
 
 function daysSince(date) {
   const parsedDate = new Date(date);
@@ -98,10 +121,10 @@ function daysSince(date) {
   const differenceInMilliseconds =
     today.getTime() - parsedDate.getTime();
   const differenceInDays =
-    differenceInMilliseconds / (1000 * 60 * 60 * 24);
+    differenceInMilliseconds / (24 * 60 * 60 * 1000);
   return Math.floor(differenceInDays);
 }
-
+// TODO: FIX THE MONDO ACTIVITY DATE BEING OFF BY A DAY
 // SHOW PAGE
 app.get(
   "/deals/:id",
@@ -153,7 +176,7 @@ app.get(
 
     res.render("edit", {
       deal,
-      dealValue,
+      // dealValue,
       createDate,
       activityDate,
       daysActivity,
@@ -171,6 +194,8 @@ app.put(
     const deal = await Deal.findByIdAndUpdate(id, {
       ...req.body.deal,
     });
+    deal.lastActivityDate = new Date();
+    deal.lastActivityDays = 0;
 
     await deal.save();
     res.redirect(`/deals/${id}`);
@@ -199,7 +224,7 @@ app.use((err, req, res, next) => {
 });
 
 // START THE SERVER
-const port = 4837;
+const port = 4839;
 app.listen(port, () => {
   console.log(`Serving on port ${port}`);
 });
